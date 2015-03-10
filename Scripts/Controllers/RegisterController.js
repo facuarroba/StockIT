@@ -1,0 +1,24 @@
+var RegisterController = function($scope, LoginFactory, RegisterFactory, SessionService){
+    $scope.registerForm = {
+        username: undefined,
+		email: undefined,
+        password: undefined, 
+        confirmPassword: undefined,
+        errorMessage: undefined
+    };
+    
+    $scope.register = function(){
+        RegisterFactory($scope.registerForm.username,$scope.registerForm.email, $scope.registerForm.password, $scope.registerForm.confirmPassword)
+        .then(function(){
+            LoginFactory($scope.registerForm.username, $scope.registerForm.password)
+            .then(function(response){
+                SessionService.token = response.access_token;
+            }, function(response){
+                $scope.registerForm.errorMessage = response;
+            });
+        }, function(response){
+            $scope.registerForm.errorMessage = response;
+        });
+    }
+}
+RegisterController.$inject = ['$scope', 'LoginFactory', 'RegisterFactory', 'SessionService'];

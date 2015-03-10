@@ -1,0 +1,52 @@
+
+<script type="text/ng-template" id="views/articulos_search.html">
+
+    <div>
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="input-group">
+                    <input class="form-control" ng-model="buscar.$" placeholder="Buscar" type="search" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </span>
+                </div>
+            </div>
+            <div class="panel-body">
+                <table class="table table-striped">  <!--  -->
+                    <thead>
+                    <tr>
+                        <th>Codigo</th>
+                        <th>Nombre</th>
+                        <th>Descripcion</th>
+                        <th>Marca</th>
+                        <th>Presentacion</th>
+                        <th>Origen</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr dir-paginate="item in articulos | filter:buscar | itemsPerPage: 8" pagination-id="artsSearch" >
+                        <td>{{item.Codigo}}</td>
+                        <td>{{item.Nombre}}</td>
+                        <td>{{item.Descripcion}}</td>
+                        <td>{{item.Marca}}</td>
+                        <td>{{item.Presentacion}}</td>
+                        <td>{{item.Origen}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <dir-pagination-controls pagination-id="artsSearch" boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="/Scripts/Libraries/Pagination/dirPagination.tpl.html.html"></dir-pagination-controls>
+                <div id="test-template">
+                    <div id="tt-pagination-current">{{ pagination.current }}</div>
+                    <div id="tt-pagination-last">{{ pagination.last }}</div>
+                    <div id="tt-range-lower">{{ range.lower }}</div>
+                    <div id="tt-range-upper">{{ range.upper }}</div>
+                    <div id="tt-range-total">{{ range.total }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</script>
+       
+    

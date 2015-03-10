@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Angular Web App 2.0</title>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/css/bootstrap.min.css">
+</head>
+
+<body ng-app="AngularWebApp" ng-controller="BaseController">
+{{helloAgain}}
+
+<a href="/#/login" ng-if="!loggedIn()">Ingresar</a>
+<a href="/#/register" ng-if="!loggedIn()">Registrar</a>
+<a href="/#/logout" ng-if="loggedIn()">Salir</a>
+<a href="/#/articulos">Articulos</a>
+<a href="/#/ventas">Ventas</a>
+<a href="/#/compras">Compras</a>
+
+<span class="label label-success" ng-if="loggedIn()">Logged In</span>
+
+<div ng-view></div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0-beta.4/angular.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.0/angular-route.min.js"></script>
+
+<script src="/Scripts/Services/SessionService.js"></script>
+<script src="/Scripts/Controllers/BaseController.js"></script>
+<script src="/Scripts/Controllers/LoginController.js"></script>
+<script src="/Scripts/Controllers/RegisterController.js"></script>
+<script src="/Scripts/Controllers/ArticulosController.js"></script>
+<script src="/Scripts/Controllers/VentasController.js"></script>
+<script src="/Scripts/Factories/LoginFactory.js"></script>
+<script src="/Scripts/Factories/RegisterFactory.js"></script>
+<script src="/Scripts/Factories/GetArticulosFactory.js"></script>
+<script src="/Scripts/Factories/GetArticulosByCodigoFactory.js"></script>
+<script src="/Scripts/Libraries/Pagination/dirPagination.js"></script>
+<script src="/Scripts/Directives/ngEnter.js"></script>
+<script src="/Scripts/AngularWebApp.js"></script>
+</body>
+
+</html>
